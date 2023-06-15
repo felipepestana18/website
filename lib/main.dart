@@ -1,4 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,48 +61,153 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    var larguraDividoPorDois = MediaQuery.of(context).size.width / 2;
+    var alturaPagina = MediaQuery.of(context).size.height;
+    double alturacabecalhoPagina = 180;
+    double larguracabecalhoPagina = 180;
+    alturaPagina = alturaPagina - alturacabecalhoPagina;
+    print(alturaPagina);
+
     return Scaffold(
         body: Container(
       color: Colors.black,
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: 180,
-                      height: 180,
-                      decoration: const BoxDecoration(
-                        color: const Color.fromRGBO(245, 245, 241, 0.992),
-                        shape: BoxShape.circle,
-                      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: alturacabecalhoPagina,
+                          height: larguracabecalhoPagina,
+                          decoration: const BoxDecoration(
+                            color: const Color.fromRGBO(245, 245, 241, 0.992),
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        Container(
+                          child: const Text(
+                            "Felipe",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 40,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: const Text(
+                            "Pestana",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const Text(
-                      "Felipe",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const Text(
-                      "Pestana",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  width: larguraDividoPorDois,
+                  height: alturaPagina,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(80, 200, 5, 5),
+                    child: Container(
+                        width: 200,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Sobre Mim",
+                              style: GoogleFonts.tauri(
+                                  color: Colors.blue,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                            Text(
+                              "Olá meu nome é Felipe Pestana, sou Formado em Análise e Desenvolvimento de Sistemas pela FATEC e atuo na área de desenvolvimento Web há mais de 3 anos, sou mais focado na parte do Back-End, sempre estou buscando novos desafios e novos conhencimentos. Meu hobby é curtir os momentos em familia, jogar video-game, assistir futebol, e VAI CORINTHIANS!!!",
+                              style: GoogleFonts.tauri(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  textStyle:
+                                      TextStyle(overflow: TextOverflow.clip)),
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+                Container(
+                  width: larguraDividoPorDois,
+                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  height: 500,
+                  child:
+                      Lottie.asset("imagens/animation/animation_develop.json"),
+                )
+              ],
+            ),
+            Container(
+              height: alturaPagina,
+              padding: EdgeInsets.fromLTRB(80, 200, 5, 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Habilidades",
+                    style: GoogleFonts.tauri(
+                        color: Colors.blue,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w900),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(200, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 400,
+                          height: 50,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 10,
+                          width: 20,
+                        ),
+                        Container(
+                          width: 400,
+                          height: 50,
+                          color: Colors.white,
+                          child: Row(
+                            children: [
+                              Container(
+                                child: Text("AAA"),
+                              ),
+                              Container(
+                                child: Text("AAA"),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
-            ],
-          )
-        ],
+            ),
+          ],
+        ),
       ),
     ));
   }
